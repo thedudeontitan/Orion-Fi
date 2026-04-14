@@ -1,0 +1,22 @@
+{
+  "name": "ouro-fi-contracts",
+  "version": "1.0.0",
+  "description": "Ouro Fi smart contracts for Algorand",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "npx puya-ts compile smart_contracts/*.algo.ts",
+    "deploy": "npx tsx deploy-config.ts",
+    "setup:testnet": "npx tsx scripts/setup-testnet.ts"
+  },
+  "dependencies": {
+    "@algorandfoundation/algorand-typescript": "^1.0.0",
+    "@algorandfoundation/algokit-utils": "^8.0.0",
+    "algosdk": "^3.0.0"
+  },
+  "devDependencies": {
+    "@algorandfoundation/puya-ts": "^1.0.0",
+    "tsx": "^4.0.0",
+    "typescript": "^5.5.0"
+  }
+}

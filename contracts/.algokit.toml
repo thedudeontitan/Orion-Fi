@@ -1,0 +1,7 @@
+[project]
+type = "contract"
+name = "ouro-fi-contracts"
+
+[project.run]
+build = { commands = ["npx puya-ts compile smart_contracts/*.algo.ts"] }
+deploy = { commands = ["npx tsx deploy-config.ts"] }
