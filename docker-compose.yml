@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+  redis:
+    image: "redis:alpine"   # Use the Redis Alpine image for a lightweight container
+    container_name: redis_container  # Optional: Name the container
+    ports:
+      - "6379:6379"  # Expose Redis on port 6379
+    volumes:
+      - redis-data:/data  # Persist Redis data in a Docker volume
+
+volumes:
+  redis-data:

@@ -1,0 +1,13 @@
+{
+  "network": "testnet",
+  "deployer_address": "EGMQKGVAYLBI7TWVM4U5JDRKQDD6UVSTV7LFHHKGLFOKRAPCWAJSF7UAXI",
+  "deployment_timestamp": 1763365992,
+  "contracts": {
+    "oracle": 749789285,
+    "dex": 749789305,
+    "orderbook": 749789319
+  },
+  "asset_ids": {
+    "USDC": 10458941
+  }
+}

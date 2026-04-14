@@ -1,0 +1,8 @@
+# Orion Fi Deployment Requirements
+
+# Core Algorand SDK
+py-algorand-sdk>=2.6.0
+
+# Additional utilities
+python-dotenv>=1.0.0
+click>=8.0.0
