@@ -231,9 +231,7 @@ export default function Navbar() {
                 >
                   <div className="w-2 h-2 rounded-full bg-success animate-glow" />
                   <div className="font-mono text-sm text-accent-dark">
-                    {activeAddress
-                      ? formatAddress(activeAddress)
-                      : "Connected"}
+                    {activeAddress ? formatAddress(activeAddress) : "Connected"}
                   </div>
                 </motion.div>
 

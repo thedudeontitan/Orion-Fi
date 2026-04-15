@@ -36,10 +36,6 @@ const initialMarkets: Omit<MarketData, 'price'>[] = [
     sparklineData: [115000, 114500, 114000, 113800, 113500, 113600, 113651], category: "L1/L2"
   },
   {
-    symbol: "SOL", name: "Solana", change24h: -2.67, icon: "/sol.png",
-    sparklineData: [205, 203, 201, 199, 197, 198, 198.86], category: "L1/L2"
-  },
-  {
     symbol: "ALGO", name: "Algorand", change24h: 1.24, icon: "/algorand.png",
     sparklineData: [0.35, 0.34, 0.36, 0.37, 0.35, 0.36, 0.35], category: "L1/L2"
   }

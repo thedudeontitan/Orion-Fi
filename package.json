@@ -8,10 +8,11 @@
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "test": "vitest",
-    "test:ui": "./test/ui/test-ui.sh"
+    "test:ui": "./test/ui/test-ui.sh",
+    "generate:clients": "algokitgen generate -a contracts/smart_contracts/out/PerpetualDEX.arc56.json -o src/clients/PerpetualDEXClient.ts && algokitgen generate -a contracts/smart_contracts/out/Vault.arc56.json -o src/clients/VaultClient.ts && algokitgen generate -a contracts/smart_contracts/out/PriceOracle.arc56.json -o src/clients/PriceOracleClient.ts && algokitgen generate -a contracts/smart_contracts/out/FundingRateManager.arc56.json -o src/clients/FundingRateManagerClient.ts"
   },
   "dependencies": {
-    "@algorandfoundation/algokit-utils": "^6.0.0",
+    "@algorandfoundation/algokit-utils": "^9.2.0",
     "@blockshake/defly-connect": "^1.2.1",
     "@emotion/react": "^11.13.3",
     "@emotion/styled": "^11.13.0",
@@ -25,6 +26,7 @@
     "@types/node": "^24.10.1",
     "algosdk": "^3.5.2",
     "bignumber.js": "^9.1.2",
+    "buffer": "^6.0.3",
     "clsx": "2.1.1",
     "dotenv": "^16.4.5",
     "framer-motion": "^12.23.24",
@@ -38,6 +40,7 @@
     "react-toastify": "^10.0.5"
   },
   "devDependencies": {
+    "@algorandfoundation/algokit-client-generator": "^6.0.1",
     "@eslint/js": "^9.10.0",
     "@playwright/test": "^1.47.2",
     "@tanstack/router-plugin": "^1.56.4",

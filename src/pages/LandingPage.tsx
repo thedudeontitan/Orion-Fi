@@ -26,7 +26,6 @@ const item = {
 export default function LandingPage() {
   const [ethPrice, setEthPrice] = useState<number>(0);
   const [btcPrice, setBtcPrice] = useState<number>(0);
-  const [solPrice, setSolPrice] = useState<number>(0);
   const [algoPrice, setAlgoPrice] = useState<number>(0);
   const navigate = useNavigate();
 
@@ -34,7 +33,6 @@ export default function LandingPage() {
     Promise.all([
       getSymbolPrice("ETHUSD").then(setEthPrice),
       getSymbolPrice("BTCUSD").then(setBtcPrice),
-      getSymbolPrice("SOLUSD").then(setSolPrice),
       getSymbolPrice("ALGOUSD").then(setAlgoPrice),
     ]);
   }, []);
@@ -53,13 +51,6 @@ export default function LandingPage() {
       price: btcPrice,
       change: 2.41,
       icon: "/btc.png",
-    },
-    {
-      symbol: "SOL",
-      name: "Solana",
-      price: solPrice,
-      change: -1.87,
-      icon: "/sol.png",
     },
     {
       symbol: "ALGO",
@@ -471,7 +462,9 @@ export default function LandingPage() {
                 <span className="text-4xl lg:text-5xl font-bold text-gradient">
                   {stat.value}
                 </span>
-                <span className="text-sm text-accent-dark/40">{stat.label}</span>
+                <span className="text-sm text-accent-dark/40">
+                  {stat.label}
+                </span>
               </motion.div>
             ))}
           </motion.div>

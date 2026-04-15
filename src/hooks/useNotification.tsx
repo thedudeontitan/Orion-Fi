@@ -4,6 +4,27 @@ import { toast, Id, TypeOptions } from "react-toastify";
 import { renderTransactionId } from "../lib.tsx";
 
 /**
+ * Turn a raw Algorand/algokit error into a short human-readable string.
+ * Strips TEAL preambles and surfaces the assert message when present.
+ */
+export function parseAlgoError(err: unknown): string {
+  if (err === null || err === undefined) return "Unknown error";
+  const raw = err instanceof Error ? err.message : String(err);
+
+  // Common TEAL/simulate preamble: "logic eval error: <msg>. Details: ..."
+  const evalMatch = raw.match(/logic eval error:\s*([^.]+)/i);
+  if (evalMatch) return evalMatch[1].trim();
+
+  // Assert messages are often ErrorMessage format
+  const assertMatch = raw.match(/assert(?:ion)? failed(?:\s*:)?\s*(.+?)(?:\n|$)/i);
+  if (assertMatch) return assertMatch[1].trim();
+
+  // Strip PC/opcode position noise at the tail of some messages
+  const trimmed = raw.split("\n")[0]?.trim() ?? raw;
+  return trimmed.length > 200 ? `${trimmed.slice(0, 197)}…` : trimmed;
+}
+
+/**
  * Hook to handle app notifications
  */
 export const useNotification = () => {

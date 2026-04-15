@@ -1,6 +1,8 @@
 node_modules/
 dist/
 .env
+.env.local
+.env.*.local
 .DS_Store
 *.log
 coverage/
@@ -9,3 +11,11 @@ tsconfig.app.tsbuildinfo
 tsconfig.node.tsbuildinfo
 
 venv/
+
+.claude/
+.codex/
+
+contracts/smart_contracts/out
+
+.agents/
+

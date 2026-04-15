@@ -1,4 +1,6 @@
-import { providerUrl, playgroundUrl } from "../lib.tsx";
+import { providerUrl } from "../lib.tsx";
+
+const indexerDocsUrl = "https://developer.algorand.org/docs/rest-apis/indexer/";
 
 export default function Info() {
   return (
@@ -37,7 +39,7 @@ export default function Info() {
         Algorand Docs
       </a>
       <a
-        href={playgroundUrl}
+        href={indexerDocsUrl}
         target="_blank"
         className="inline-block text-green-500/80 transition-colors hover:text-green-500 w-full"
         rel="noreferrer"
