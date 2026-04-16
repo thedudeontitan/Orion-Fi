@@ -107,7 +107,6 @@ export default function Navbar() {
                 href: "/trade/ALGOUSD",
                 icon: "/algorand.png",
               },
-              { path: "/rewards", label: "Rewards" },
             ].map((nav) => (
               <motion.div
                 key={nav.path}
@@ -166,14 +165,6 @@ export default function Navbar() {
               <MenuItems className="absolute right-0 mt-2 w-48 rounded-xl glass-strong shadow-card overflow-hidden">
                 <MenuItem>
                   <Link
-                    to="/earn/staking"
-                    className="block px-4 py-3 text-sm text-accent-dark/70 hover:text-accent-dark hover:bg-accent/[0.06] transition-colors"
-                  >
-                    Staking
-                  </Link>
-                </MenuItem>
-                <MenuItem>
-                  <Link
                     to="/earn/liquidity"
                     className="block px-4 py-3 text-sm text-accent-dark/70 hover:text-accent-dark hover:bg-accent/[0.06] transition-colors"
                   >
@@ -182,15 +173,6 @@ export default function Navbar() {
                 </MenuItem>
               </MenuItems>
             </Menu>
-
-            <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
-              <Link
-                to="/profile"
-                className="px-4 py-2 rounded-xl text-sm font-medium text-accent-dark/50 hover:text-accent-dark/80 hover:bg-accent/[0.03] transition-all duration-200"
-              >
-                Profile
-              </Link>
-            </motion.div>
           </motion.div>
 
           {/* Wallet */}
@@ -253,14 +235,6 @@ export default function Navbar() {
                     </svg>
                   </MenuButton>
                   <MenuItems className="absolute right-0 mt-2 w-48 rounded-xl glass-strong shadow-card overflow-hidden">
-                    <MenuItem>
-                      <Link
-                        to="/profile"
-                        className="block px-4 py-3 text-sm text-accent-dark/70 hover:text-accent-dark hover:bg-accent/[0.06] transition-colors"
-                      >
-                        Profile
-                      </Link>
-                    </MenuItem>
                     <MenuItem>
                       <button
                         onClick={handleDisconnect}

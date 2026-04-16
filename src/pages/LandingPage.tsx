@@ -63,9 +63,9 @@ export default function LandingPage() {
 
   const features = [
     {
-      title: "Off-Chain Order Book",
+      title: "Oracle-Anchored AMM",
       description:
-        "Lightning-fast order placement and execution with minimal latency",
+        "Trade directly against a shared liquidity vault at guaranteed oracle prices",
       icon: (
         <svg
           className="w-6 h-6"
@@ -105,7 +105,7 @@ export default function LandingPage() {
     {
       title: "Leverage Trading",
       description:
-        "Trade with up to 100x leverage on major assets like ETH, BTC, SOL, and ALGO",
+        "Trade with up to 100x leverage on major assets like ETH, BTC, and ALGO",
       icon: (
         <svg
           className="w-6 h-6"
@@ -186,28 +186,28 @@ export default function LandingPage() {
 
   const roadmapData = [
     {
-      quarter: "Q1 2025",
+      quarter: "Q1 2026",
       title: "Initial Launch",
       description: "Launch of core trading features and initial market pairs",
       items: [
-        "ETH, BTC, SOL, ALGO trading pairs",
-        "Off-chain order book deployment",
+        "ETH, BTC, ALGO trading pairs",
+        "Oracle-anchored AMM deployment",
         "Basic leverage trading features",
+      ],
+    },
+    {
+      quarter: "Q2 2026",
+      title: "Advanced Trading Features",
+      description: "Enhanced trading capabilities and improved user experience",
+      items: [
+        "Automated liquidation mechanism",
+        "Funding rate optimizations",
+        "Advanced order types",
       ],
       status: "current",
     },
     {
-      quarter: "Q2 2025",
-      title: "Advanced Trading Features",
-      description: "Enhanced trading capabilities and improved user experience",
-      items: [
-        "Advanced order types",
-        "Position management tools",
-        "Enhanced risk controls",
-      ],
-    },
-    {
-      quarter: "Q3 2025",
+      quarter: "Q3 2026",
       title: "Analytics and Insights",
       description: "Comprehensive trading analytics and portfolio insights",
       items: [
@@ -217,12 +217,12 @@ export default function LandingPage() {
       ],
     },
     {
-      quarter: "Q4 2025",
+      quarter: "Q4 2026",
       title: "Platform Expansion",
       description: "Additional features and market expansion",
       items: [
-        "More trading pairs",
-        "Cross-chain integration",
+        "Cross-chain perpetual DEX integration",
+        "Trading competitions",
         "Enhanced liquidity pools",
       ],
     },
@@ -294,9 +294,7 @@ export default function LandingPage() {
                 className="text-lg text-accent-dark/50 max-w-xl leading-relaxed"
                 variants={item}
               >
-                Experience lightning-fast perpetual trading with off-chain
-                execution and on-chain settlement for maximum security and
-                efficiency.
+                Experience lightning-fast perpetual trading with an oracle-anchored AMM, delivering zero slippage and deep liquidity from day one.
               </motion.p>
 
               <motion.div className="flex items-center gap-4" variants={item}>
@@ -371,7 +369,7 @@ export default function LandingPage() {
                   </span>
                 </div>
                 <p className="text-sm text-accent-dark/40 pl-11">
-                  ETH, BTC, SOL, and ALGO with up to 100x leverage
+                  ETH, BTC, and ALGO with up to 100x leverage
                 </p>
               </motion.div>
 
@@ -399,11 +397,11 @@ export default function LandingPage() {
                     </svg>
                   </div>
                   <span className="text-lg font-bold text-accent-dark">
-                    Ultra-Low Latency
+                    Zero Slippage
                   </span>
                 </div>
                 <p className="text-sm text-accent-dark/40 pl-11">
-                  Off-chain order book for instant execution
+                  Oracle-first architecture ensures accurate pricing
                 </p>
               </motion.div>
 

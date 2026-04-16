@@ -1,5 +1,14 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { useEffect } from "react";
+import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
 import { WalletProvider } from "@txnlab/use-wallet-react";
+
+function ScrollToTop() {
+  const { pathname } = useLocation();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+  return null;
+}
 import Navbar from "./components/Navbar";
 import LandingPage from "./pages/LandingPage";
 import Markets from "./pages/Markets";
@@ -13,6 +22,7 @@ export default function App() {
     <WalletProvider manager={walletManager}>
       <div data-rk className="min-h-screen bg-surface text-accent-dark font-sans">
         <BrowserRouter>
+          <ScrollToTop />
           <Navbar />
           <Routes>
             <Route path="/" element={<LandingPage />} />

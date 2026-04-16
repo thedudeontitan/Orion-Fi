@@ -16,6 +16,7 @@ import {
   itxn,
   gtxn,
   abimethod,
+  op,
 } from '@algorandfoundation/algorand-typescript'
 
 // LP position tracked per depositor
@@ -142,7 +143,9 @@ export class Vault extends Contract {
       sharesIssued = depositAmount * SHARE_PRECISION
     } else {
       // sharesIssued = depositAmount * totalShares / totalPoolValue
-      sharesIssued = (depositAmount * this.totalShares.value) / this.totalPoolValue.value
+      // Use wide (128-bit) multiply to avoid uint64 overflow
+      const [hi, lo] = op.mulw(depositAmount, this.totalShares.value)
+      sharesIssued = op.divw(hi, lo, this.totalPoolValue.value)
     }
 
     assert(sharesIssued > Uint64(0), 'Shares too small')
@@ -185,15 +188,17 @@ export class Vault extends Contract {
     assert(sharesToBurn > Uint64(0), 'Must burn shares')
 
     // Calculate USDC amount: sharesToBurn * totalPoolValue / totalShares
-    const grossAmount: uint64 =
-      (sharesToBurn * this.totalPoolValue.value) / this.totalShares.value
+    // Use wide (128-bit) multiply to avoid uint64 overflow
+    const [hiGross, loGross] = op.mulw(sharesToBurn, this.totalPoolValue.value)
+    const grossAmount: uint64 = op.divw(hiGross, loGross, this.totalShares.value)
 
     // Check available liquidity (pool value minus reserved for open positions)
     const availableLiquidity: uint64 = this.totalPoolValue.value - this.reservedForPayouts.value
     assert(grossAmount <= availableLiquidity, 'Insufficient liquidity')
 
     // Deduct withdrawal fee (stays in pool)
-    const feeAmount: uint64 = (grossAmount * this.withdrawalFee.value) / BASIS_POINTS
+    const [hiFee, loFee] = op.mulw(grossAmount, this.withdrawalFee.value)
+    const feeAmount: uint64 = op.divw(hiFee, loFee, BASIS_POINTS)
     const netAmount: uint64 = grossAmount - feeAmount
 
     // Update pool state — remove the gross amount but fee stays in pool
@@ -324,7 +329,8 @@ export class Vault extends Contract {
       return SHARE_PRECISION
     }
     // sharePrice = totalPoolValue * SHARE_PRECISION / totalShares
-    return (this.totalPoolValue.value * SHARE_PRECISION) / this.totalShares.value
+    const [hi, lo] = op.mulw(this.totalPoolValue.value, SHARE_PRECISION)
+    return op.divw(hi, lo, this.totalShares.value)
   }
 
   @abimethod({ readonly: true })
@@ -342,7 +348,8 @@ export class Vault extends Contract {
     if (this.totalShares.value === Uint64(0)) {
       return Uint64(0)
     }
-    return (position.shares * this.totalPoolValue.value) / this.totalShares.value
+    const [hi, lo] = op.mulw(position.shares, this.totalPoolValue.value)
+    return op.divw(hi, lo, this.totalShares.value)
   }
 
   @abimethod({ readonly: true })
@@ -350,7 +357,8 @@ export class Vault extends Contract {
     if (this.totalPoolValue.value === Uint64(0)) {
       return Uint64(0)
     }
-    return (this.reservedForPayouts.value * BASIS_POINTS) / this.totalPoolValue.value
+    const [hi, lo] = op.mulw(this.reservedForPayouts.value, BASIS_POINTS)
+    return op.divw(hi, lo, this.totalPoolValue.value)
   }
 
   // ────────────────────────────────────────────

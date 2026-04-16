@@ -47,20 +47,20 @@ export function VaultStats() {
 
   return (
     <motion.div
-      className="rounded-2xl p-5 border border-white/[0.06] bg-white/[0.02] backdrop-blur-xl"
+      className="rounded-[24px] border border-accent/[0.12] bg-white/90 p-6 shadow-[0_18px_55px_rgba(91,33,182,0.08)]"
       initial={{ opacity: 0, y: 10 }}
       animate={{ opacity: 1, y: 0 }}
     >
-      <div className="text-[10px] text-white/30 uppercase tracking-wider mb-4">
+      <div className="mb-4 text-[10px] uppercase tracking-wider text-accent-dark/40">
         Vault Stats
       </div>
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
         {stats.map((s) => (
           <div key={s.label}>
-            <div className="text-[10px] text-white/30 uppercase tracking-wider mb-1">
+            <div className="mb-1 text-[10px] uppercase tracking-wider text-accent-dark/40">
               {s.label}
             </div>
-            <div className="text-lg font-semibold text-white font-mono">
+            <div className="font-mono text-lg font-semibold text-accent-dark">
               {s.value}
             </div>
           </div>
