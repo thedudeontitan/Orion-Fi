@@ -12,6 +12,13 @@ Perpetual futures are the most traded instrument in crypto, yet almost all volum
 
 Orion Fi removes the order book entirely. Liquidity providers deposit USDC into a **Vault** that acts as the counterparty to every trade. Prices come from **Pyth Network** via an on-chain oracle, so traders get fair market execution regardless of on-chain depth. LPs earn trading fees and profit when traders lose -- a sustainable yield source tied to real protocol revenue.
 
+## Smart Contracts 
+
+PRICE ORACLE APP ID=758922988
+PERPETUAL DEX APP ID=758928782
+VAULT APP ID=758939770
+FUNDING RATE MANAGER APP ID=758922991
+
 ## Architecture
 
 ```
