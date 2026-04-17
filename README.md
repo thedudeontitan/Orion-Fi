@@ -15,8 +15,11 @@ Orion Fi removes the order book entirely. Liquidity providers deposit USDC into 
 ## Smart Contracts 
 
 PRICE ORACLE APP ID=758922988
+
 PERPETUAL DEX APP ID=758928782
+
 VAULT APP ID=758939770
+
 FUNDING RATE MANAGER APP ID=758922991
 
 ## Architecture
